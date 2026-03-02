@@ -67,7 +67,7 @@ class ST_SAM(nn.Module):
             in_channels=32, 
             kernel_size_large=23,  # 恢复最优大感受野
             kernel_size_small=7, 
-            reduction=8            # 🚀 终极杀手锏：降低通道自由度，强迫边缘平滑
+            reduction=16            # 🚀 终极杀手锏：降低通道自由度，强迫边缘平滑
         )
         
         # 【s1 层 (Stride 8)】: 
@@ -75,7 +75,7 @@ class ST_SAM(nn.Module):
             in_channels=64, 
             kernel_size_large=23,  # 恢复最优大感受野
             kernel_size_small=7,
-            reduction=8            # 🚀 终极杀手锏
+            reduction=16            # 🚀 终极杀手锏
         )
 
         # ---------------------------------------------------------
