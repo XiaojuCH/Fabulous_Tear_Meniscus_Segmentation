@@ -16,4 +16,4 @@ src/__pycache__/NNNew_att_v2_PPPGPT.cpython-310.pyc
 mask_cleaning_visualization.png
 *.log
 datas
-data_splits/*.json
+# data_splits/*.json
