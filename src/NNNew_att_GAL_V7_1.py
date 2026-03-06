@@ -62,19 +62,15 @@ class GAL_Adapter(nn.Module):
             nn.Conv2d(mid_channels, in_channels * num_branches, kernel_size=1, bias=False)
         )
 
-        # 🚀 补丁2：CCSM 脑容量扩充 (增强对极端红外的调制表达能力)
         style_hidden = in_channels * 4  
         self.style_fc = nn.Sequential(
-            # 去掉第一个卷积的 bias，因为后面紧跟了 BN
             nn.Conv2d(in_channels * 2, style_hidden, 1, bias=False), 
-            
-            # 🚀 核心解药：在隐藏层插入 BN。
-            # 无论输入的红外均值/方差有多么离谱，这里都会将其拉平到健康区间，防止 gamma 顶死
             nn.BatchNorm2d(style_hidden), 
-            
             nn.GELU(),
             nn.Conv2d(style_hidden, in_channels * 2, 1)  
         )
+
+        self.proj_out = nn.Conv2d(in_channels, in_channels, 1, bias=False)
 
     def forward(self, x):
         shortcut = x
