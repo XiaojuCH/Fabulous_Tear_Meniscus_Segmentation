@@ -16,7 +16,7 @@ import os
 # from NNNew_att_v2_PPPGPT_final_bk import GSCSA
 # from NNNew_att_v2_PPPGPT_final_bk import GSCSA
 
-# from NNNew_att_GAL_bk import GAL_Adapter
+from NNNew_att_GAL_bk import GAL_Adapter
 
 # from NNNew_att_GAL_Notin import GAL_Adapter
 # from NNNew_att_GAL_V2 import GAL_Adapter
@@ -28,7 +28,7 @@ import os
 # from NNNew_att_GAL_V8 import GAL_Adapter
 # from NNNew_att_GAL_V9 import GAL_Adapter
 # from NNNew_att_GAL_V10 import GAL_Adapter
-from NNNew_att_GAL_V7_1 import GAL_Adapter
+# from NNNew_att_GAL_V7_1 import GAL_Adapter
 
 
 # ==============================================================================
@@ -72,14 +72,12 @@ class ST_SAM(nn.Module):
         self.adapter_s0 = GAL_Adapter(
             in_channels=32, 
             kernel_size_large=23, 
-            kernel_size_mid=15,    # 🚀 新增
             kernel_size_small=7, 
-            reduction=16           # 坚守神级参数
+            reduction=16           # 🚀 极限降噪神级参数
         )
         self.adapter_s1 = GAL_Adapter(
             in_channels=64, 
             kernel_size_large=23, 
-            kernel_size_mid=15,    # 🚀 新增
             kernel_size_small=7,
             reduction=16
         )
